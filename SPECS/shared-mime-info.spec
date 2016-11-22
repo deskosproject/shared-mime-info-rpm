@@ -1,7 +1,8 @@
 Summary: Shared MIME information database
 Name: shared-mime-info
 Version: 1.1
-Release: 9%{?dist}
+Release: 10%{?dist}
+Epoch: 1
 License: GPLv2+
 Group: System Environment/Base
 URL: http://freedesktop.org/Software/shared-mime-info
@@ -43,6 +44,10 @@ and looking up the correct MIME type in a database.
 %setup -q
 %patch0 -p1 -b .ooo-zip
 %patch1 -p1 -b .raw
+
+# DeskOS overrides:
+sed -i s/org\.gnome\.Totem\;totem\.desktop/gnome-mplayer\.desktop/g %SOURCE2
+sed -i s/shotwell-viewer\.desktop/gthumb\.desktop/g %SOURCE4
 
 %build
 
@@ -90,6 +95,11 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/*
 %{_mandir}/man*/*
 
 %changelog
+* Tue Nov 22 2016 Ricardo Arguello <rarguello@deskosproject.org> - 1:1.1-10
+- Rebuilt for DeskOS
+- Replaced Totem with GNOME MPlayer
+- Replaced Shotwell with gThumb
+
 * Fri Jul 17 2015 Matthias Clasen <mclasen@redhat.com> 1.1-9
 - Add support for raw disk images
   Related: #1211198
