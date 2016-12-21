@@ -1,7 +1,7 @@
 Summary: Shared MIME information database
 Name: shared-mime-info
 Version: 1.1
-Release: 10%{?dist}
+Release: 11%{?dist}
 Epoch: 1
 License: GPLv2+
 Group: System Environment/Base
@@ -95,6 +95,10 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/*
 %{_mandir}/man*/*
 
 %changelog
+* Tue Dec 20 2016 Ricardo Arguello <rarguello@deskosproject.org> - 1:1.1-11
+- Remove gedit.desktop from defaults.list and just leave org.gnome.gedit.desktop
+  (related bug https://bugzilla.redhat.com/show_bug.cgi?id=1235413)
+
 * Tue Nov 22 2016 Ricardo Arguello <rarguello@deskosproject.org> - 1:1.1-10
 - Rebuilt for DeskOS
 - Replaced Totem with GNOME MPlayer
